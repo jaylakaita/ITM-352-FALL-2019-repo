@@ -1,4 +1,2 @@
-# hello-world
-
-My name is Jayla and I like to travel and take pictures.
-I am an introvert, so I apologize in advance for my awkardness.
+# Repo for ITM 352 Fall 2019 labs and assignments
+Put all ITM 352 files here
