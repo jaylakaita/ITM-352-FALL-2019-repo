@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Used Smartphone Store</title>
+    <link rel="stylesheet" href="style.css">
+    <style id="localstyle"></style> 
+</head>
+
+<input id='speedSlider' type='range' min="0" max="5" step=".1" onchange="localStyle.innerHTML = '.rotate img {animation-duration: ' + speedSlider.value + 's;}';" >
+
+<header>
+    <h1 align="center">Jayla's Used Smartphone Store</h1>
+</header>
+
+<body>
+    <div>
+        <main>
+            <section class="item" onmouseover="this.className='item rotate';" onclick="this.className='item';" id="HTC">
+                <h2>HTC</h2>
+                <p>$40.00</p>
+                <img src="http://dport96.github.io/ITM352/morea/090.flow-control-II/HTC.jpg" alt="HTC Phones">
+            </section>
+
+            <section class="item" onmouseover="this.className='item rotate';" onclick="this.className='item';">
+                <h2>Apple</h2> 
+                <p>$75.00</p>
+                <img src="http://dport96.github.io/ITM352/morea/090.flow-control-II/iphone-3gs.jpg">
+            </section>
+
+            <section class="item" onmouseover="this.className='item rotate';" onclick="this.className='item';">
+                <h2>Nokia</h2>
+                <p>$35.00</p>
+                <img src="http://dport96.github.io/ITM352/morea/090.flow-control-II/Nokia.jpg">
+            </section>
+
+            <section class="item" onmouseover="this.className='item rotate';" onclick="this.className='item';">
+                <h2>Samsung</h2>
+                <p>$45.00</p>
+                <img src="http://dport96.github.io/ITM352/morea/090.flow-control-II/Samsung.jpg">
+            </section>
+
+            <section class="item" onmouseover="this.className='item rotate';" onclick="this.className='item';">
+                <h2>Blackberry</h2>
+                <p>$10.00</p>
+                <img src="http://dport96.github.io/ITM352/morea/090.flow-control-II/Blackberry.jpg">
+            </section>
+        
+        </main>
+    </div>
+    <footer>
+        <h1 align="center">
+            Your One Stop Phone Shop
+        </h1>
+    </footer>
+</body>
+
+</html>
