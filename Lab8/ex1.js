@@ -1,6 +1,11 @@
 var age = 20;
-
-for(var number = 50; number > age; number--){ 
+var number = 0;
+while(number < age){
     console.log(`are you ${number} years old?`);
+    if(number > Math.sqrt(age)) {
+        console.log("I'm old!");
+        break;
     }
-   console.log(`are you ${number} years old?`); 
+    number++;
+}
+console.log(`you must be ${number} years old!`);
