@@ -1,0 +1,58 @@
+/* General */
+body {
+    width: 800px;
+    margin: 0 auto;
+}
+
+/* Styling the products display*/
+.item img {
+    width: 200px;
+    height: 200px; 
+}
+
+/* Typography */
+h1, h2, p {
+    color: white;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    text-align: center
+}
+
+/*  Form styling */
+main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    background: url(./images/product_display_image.jpg); 
+    background-repeat: no-repeat; 
+    background-position: center;
+}
+  
+/* block styling */
+div {
+    border: 5px solid black;
+    display: flex;
+  }
+
+header,footer, img {
+    background-color: darkturquoise;
+    border: 5px solid black;
+}
+
+.rotate img
+{
+  animation: rotation .3s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
