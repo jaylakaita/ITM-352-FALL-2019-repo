@@ -1,3 +1,4 @@
+//server acts as a middle man
 const querystring = require('querystring');
 
 var express = require('express');
@@ -34,17 +35,13 @@ app.get("/process_page", function (request, response) {
       if (has_errors || total_qty == 0) {
          //if quantity data is not valid, send them back to product display
          qstr = querystring.stringify(request.query);
-         response.redirect("product_display.html?" + qstr);
+         response.redirect("flowershop.html?" + qstr);
       } else { // all good to go!
          response.redirect("invoice.html?" + qstr);
       }
    }
 });
 //if quantity data valid, send them to the invoice
-
-
-
-
 
 app.use(express.static('./public'));
 app.listen(8080, () => console.log(`listening on port 8080`));

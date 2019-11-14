@@ -1,30 +1,30 @@
 var products = [
    { 
-    "brand" : "Catharanthus",
+    "flower" : "Catharanthus",
     "price" : 4.00,
     "image" : "./images/catharanthus.jpg"
     },
     
     {
-     "brand" : "Lantana",
+     "flower" : "Lantana",
      "price" : 3.00,
      "image" : "./images/Lantana.jpg"
     },
    
     {
-     "brand" : "Marigold",
+     "flower" : "Marigold",
      "price" : 5.00,
      "image" : "./images/Marigold.jpg"
     },
    
     {
-     "brand" : "Petunia",
+     "flower" : "Petunia",
      "price" : 8.00,
      "image" : "./images/Petunia.jpg"
     },
    
     {
-     "brand" : "Rose",
+     "flower" : "Rose",
      "price" : 5.00,
      "image" : "./images/Rose.jpg"
     },
