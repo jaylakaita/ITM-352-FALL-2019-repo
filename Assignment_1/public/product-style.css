@@ -1,0 +1,33 @@
+/* Typography */
+
+h1 {
+  color: rgb(255, 218, 24);
+  text-align: center;
+  font-style: inherit;
+  font-display: inherit;
+}
+h2, p {
+    color:  rgb(255, 163, 24);
+    text-align: center;
+}
+
+/*  Form styling */
+body {
+    
+    justify-content: space-around;
+    background: url(./images/sky.jpg); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+}
+
+img
+{
+  width: 200px;
+  height: 200px;
+}
+
+
+div {
+  align-content: center;
+  text-align: center;
+}
