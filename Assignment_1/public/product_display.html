@@ -52,7 +52,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Sunshine Flower Shop</title>
+    <title>Sunrise Flower Shop</title>
 
     <link href="product-style.css" rel="stylesheet">
 </head>
@@ -61,24 +61,25 @@
 
     <form name="product_selection_form" action="process_page" method="GET">
         <header>
-            <h1>Sunshine Flower Shop</h1>
+            <h1>Sunrise Flower Shop</h1>
         </header>
         <div>
             <main id="products_main_display">
                <script>
                     for (i = 0; i < products.length; i++) {
                         document.write(`
-                        <img src="${products[i].image}">
+                        <h2>${products[i].brand}</h2>
                         <h2>$${products[i].price}</h2> 
-                        <h2>${products[i].brand}</h2>                 
+                        <img src="${products[i].image}">                
                         <div>
                         <label id="quantity${i}_label"}">Quantity:</label>
-                                <input type="text" placeholder="0" name="quantity${i}" 
+                                <input type="text" placeholder="enter amount here!" name="quantity${i}" 
                                 onkeyup="checkQuantityTextbox(this);">         
                         </div>
                                 `)
                     }
                 </script>
+                <br>
                 <strong><input type="submit" value="Purchase!" name="purchase_submit"></strong>
             </main>
         </div>

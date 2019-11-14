@@ -4,23 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sunshine Flower Shop</title>
+    <title>Sunrise Flower Shop</title>
     <style>
         body {
+            /* header 1 is centered*/
             text-align: center;
+            /*header 1 text color is white*/
             color: white;
-            background: rgb(180, 245, 160);
-            text-shadow: 2px 2px rgb(253, 179, 236);
+            /*background of page is gradient transitioning from blue to purple to pink from top of the page to the bottom*/
+            background:linear-gradient(rgb(117, 181, 255), rgb(182, 151, 255), rgb(255, 210, 192)), rgb(255, 190, 241);
+        }
+        h1{
+            text-shadow: 1px 1px 2px rgb(255, 163, 250), 0 0 25px rgb(247, 0, 255), 0 0 5px rgb(139, 0, 116);
+        }
+        h2{
+            text-shadow: 1px 1px 2px rgb(255, 163, 250), 0 0 25px blue, 0 0 5px darkblue;
         }
         img {
-            border: 7px solid rgb(253, 179, 236);
-            /* Gray border */
+            /*made peach border around the image*/
+            border: 7px solid rgb(253, 200, 179);
+            /* rounded border */
             border-radius: 4px;
-            /* Rounded border */
+            /* some padding */
             padding: 5px;
-            /* Some padding */
+            /* Set width of image */
             width: 150px;
-            /* Set a small width */
+            /* Set height of image */
             height: 150px;
         }
         
@@ -28,10 +37,10 @@
 </head>
 
 <body>
-    <h1>Sunshine Flower Shop</h1>
+    <h1>Sunrise Flower Shop</h1>
     <a href="./product_display.html"> 
         <img src="images/mixed.jpg" style="height:400px;width:400px""></a> 
-    <h1>Click flowers to enter store!</h1>
+    <h2>Click flowers to enter store!</h2>
 </body>
 
 </html>
