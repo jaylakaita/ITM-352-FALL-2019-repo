@@ -54,14 +54,3 @@ function isNonNegInt(q, returnErrors = false) {
    if (parseInt(q) != q) errors.push('Not an integer!'); // Check that it is an integer
    return returnErrors ? errors : (errors.length == 0);
 }
-
-/*
-function displayPurchase(POST, response) {
-   q = POST['quantity_textbox'];
-   if (isNonNegInt(q)) {
-      response.send(`Thank you for purchasing ${q} things!`);
-   } else {
-      response.send(`${q} is not a quantity! Press the back button and try again.`);
-   }
-}
-*/
