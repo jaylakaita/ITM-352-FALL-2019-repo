@@ -2,31 +2,31 @@ var products = [
    { 
     "flower" : "Catharanthus",
     "price" : 4.00,
-    "image" : "./images/catharanthus.jpg"
+    "image" : "./images/cath.jpg"
     },
     
     {
      "flower" : "Lantana",
      "price" : 3.00,
-     "image" : "./images/Lantana.jpg"
+     "image" : "./images/lantana.jpg"
     },
    
     {
      "flower" : "Marigold",
      "price" : 5.00,
-     "image" : "./images/Marigold.jpg"
+     "image" : "./images/marigold.jpg"
     },
    
     {
      "flower" : "Petunia",
      "price" : 8.00,
-     "image" : "./images/Petunia.jpg"
+     "image" : "./images/petunia.jpg"
     },
    
     {
      "flower" : "Rose",
      "price" : 5.00,
-     "image" : "./images/Rose.jpg"
+     "image" : "./images/rose.jpg"
     }
 ];
 
