@@ -27,7 +27,7 @@ var products = [
      "flower" : "Rose",
      "price" : 5.00,
      "image" : "./images/Rose.jpg"
-    },
+    }
 ];
 
 if(typeof module != 'undefined') {
