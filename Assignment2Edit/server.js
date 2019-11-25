@@ -3,7 +3,7 @@ const querystring = require('querystring');
 
 var express = require('express');
 var myParser = require("body-parser");
-var products = require("./public/product.js.js");
+var products = require("./public/product.js");
 
 var app = express();
 app.all('*', function (request, response, next) {
