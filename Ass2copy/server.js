@@ -56,14 +56,14 @@ function isNonNegInt(q, returnErrors = false) {
    return returnErrors ? errors : (errors.length == 0);
 }
 
+///////////////////////////////////////
+
 app.use(myParser.urlencoded({ extended: true }));
-
 fs = require('fs');
-
 var filename = 'user_data.json';
 
 if(fs.existsSync(filename)) {
-//im going to check if the file exists
+    //im going to check if the file exists
     stats = fs.statSync(filename);
 
     console.log(filename + ' has ' + stats.size + 'characters');
@@ -71,25 +71,25 @@ if(fs.existsSync(filename)) {
     data = fs.readFileSync(filename, 'utf-8') 
 
     users_reg_data = JSON.parse(data);
-/*
-    username = 'newuser';
-    users_reg_data[username] = {};
-    users_reg_data[username].password = 'newpass';
-    users_reg_data[username].email = 'newuser@user.com';
-    //successfully adds another user to user_reg_data
-    fs.writeFileSync(filename, JSON.stringify(users_reg_data));
-    //take user reg data and convert to string and srite into file
-    //convert to json
-   */ 
+        /*
+        username = 'newuser';
+        users_reg_data[username] = {};
+        users_reg_data[username].password = 'newpass';
+        users_reg_data[username].email = 'newuser@user.com';
+        //successfully adds another user to user_reg_data
+        fs.writeFileSync(filename, JSON.stringify(users_reg_data));
+        //take user reg data and convert to string and srite into file
+        //convert to json
+        */ 
     console.log(users_reg_data);
-} 
-//if does not exist say it does not exist
-else {
+    } 
+
+    //if does not exist say it does not exist
+    else {
     console.log(filename + 'does not exist!')
-}
+    }
 
-
-app.get("/login", function (request, response) {
+    app.get("/login", function (request, response) {
     // Give a simple login form
     str = `
         <body>
@@ -102,25 +102,25 @@ app.get("/login", function (request, response) {
     `;
     //takes html and barfs it back
     response.send(str);
- });
+    });
 
 app.post("/login", function (request, response) {
     console.log(request.body);
     the_username = request.body.username;
     if(typeof users_reg_data[the_username] != 'undefined'){
-    //checking to see if username exists
-        if (users_reg_data[the_username].password == request.body.password){
-        //if it does exists, get the password
-        //send them to invoice
-        response.send(the_username + 'logged in');
-        }   //login
-        //response when the user is logged in to greet them 
-        //personalization
-        else {response.redirect('/login');
-        //redirects the user to the login page
-}
-}
-});
+            //checking to see if username exists
+            if (users_reg_data[the_username].password == request.body.password){
+                //if it does exists, get the password
+                //send them to invoice
+                response.send(the_username + 'logged in');
+            }   //login
+            //response when the user is logged in to greet them 
+            //personalization
+            else {response.redirect('/login');
+                //redirects the user to the login page
+            }
+        }
+    });
 
 app.get("/register", function (request, response) {
     // Give a simple register form
@@ -152,6 +152,37 @@ app.post("/register", function (request, response) {
     response.send(`${username} registered!`)
 });
 
+///////////////////////////////////////////
+app.use(myParser.urlencoded({ extended: true }));
+//intercept purchase submission form, if good give an invoice, otherwise send back to order page
+app.get("/load_reg_form", function (request, response) {
+   //check if quantity data is valid
+   //look up request.query
+   params = request.query;
+   console.log(params);
+   if (typeof params['reg_submit'] != 'undefined') {
+      has_errors = false; // assume quantities are valid from the start
+      total_qty = 0; // need to check if something was selected so we will look if the total > 0
+      for (i = 0; i < products.length; i++) {
+         if (typeof params[`quantity${i}`] != 'undefined') {
+            a_qty = params[`quantity${i}`];
+            total_qty += a_qty;
+            if (!isNonNegInt(a_qty)) {
+               has_errors = true; // oops, invalid quantity
+            }
+         }
+      }
+      qstr = querystring.stringify(request.query);
+      // Now respond to errors or redirect to invoice if all is ok
+      if (has_errors || total_qty == 0) {
+         //if quantity data is not valid, send them back to product display
+         qstr = querystring.stringify(request.query);
+         response.redirect("register.html?" + qstr);
+      } else { // all good to go!
+         response.redirect("invoice.html?" + qstr);
+      }
+   }
+});
 
 app.use(express.static('./public'));
 app.listen(8080, () => console.log(`listening on port 8080`));

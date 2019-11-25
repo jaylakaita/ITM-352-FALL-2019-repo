@@ -97,15 +97,15 @@ app.get("/register", function (request, response) {
    // Give a simple register form
    
    str = `
-<body>
-<form action="" method="POST">
-<input type="text" name="username" size="40" pattern=".{4,10}" required title="Either 4-10 Characters" placeholder="enter username" ><br />
-<input type="password" name="password"  size="40" pattern=".{6,}" required title="6 characters minimum" placeholder="enter password"><br />
-<input type="password" name="repeat_password" size="40" pattern=".{6,}" required title="6 characters minimum" placeholder="enter password again"><br />
-<input type="email" name="email" size="40" placeholder="enter email"><br />
-<input type="submit" value="Submit" id="submit">
-</form>
-</body>
+   <body>
+      <form action="" method="POST">
+         <input type="text" name="username" size="40" pattern=".{4,10}" required title="Either 4-10 Characters" placeholder="enter username" ><br />
+         <input type="password" name="password"  size="40" pattern=".{6,}" required title="6 characters minimum" placeholder="enter password"><br />
+         <input type="password" name="repeat_password" size="40" pattern=".{6,}" required title="6 characters minimum" placeholder="enter password again"><br />
+         <input type="email" name="email" size="40" placeholder="enter email"><br />
+         <input type="submit" value="Submit" id="submit">
+      </form>
+   </body>
    `;
    response.send(str);
 });
