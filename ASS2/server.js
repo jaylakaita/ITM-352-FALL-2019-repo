@@ -3,7 +3,7 @@ const querystring = require('querystring');
 
 var express = require('express');
 var myParser = require("body-parser");
-var products = require("./public/product.js.js");
+var products = require("./public/product.js");
 
 var app = express();
 app.all('*', function (request, response, next) {
@@ -79,7 +79,33 @@ app.post("/login", function (request, response) {
     }
 });
 
+/////////////////mail for security 
+//borrowed from w3schools
 
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'flowershop352@gmail.com',
+    pass: '!ITM352!'
+  }
+});
+
+var mailOptions = {
+  from: 'flowershop352@gmail.com',
+  to: 'jaylakai@hawaii.edu',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
 
 
 app.use(express.static('./public'));
