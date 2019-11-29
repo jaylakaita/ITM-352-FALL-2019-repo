@@ -7,7 +7,7 @@ var products = require("./public/product.js"); //uses flower products listed in 
 var filename = 'user_data.json' //Defines the user_data.json array as an object
 var app = express(); //Executes Express
 var qs = require('querystring');
-
+var qstr =  {};
 
 
 
@@ -58,17 +58,22 @@ function isNonNegInt(q, returnErrors = false) {
 
 
 
+
+
+
 fs = require('fs'); //Use the file system module 
 
 //returns a boolean (true or false) (Opens file only if it exists)
 if (fs.existsSync(filename)) {
-   stats=fs.statSync(filename) //gets the stats of your file
+   
+stats=fs.statSync(filename) //gets the stats of your file
   
 
 data=fs.readFileSync(filename, 'utf-8'); //Reads the file and returns back with data and then continues with code as requested.
 console.log(typeof data); //shows on the console the type of data
-users_reg_data = JSON.parse(data); //Parses data in order to turn string into an object
-}
+
+users_reg_data = JSON.parse(data); //Passes data in order to turn string into an object
+
 /*
 username = 'newuser';
 users_reg_data[username] = {};
@@ -77,41 +82,14 @@ users_reg_data[username].email = 'newuser@user.com';
 fs.writeFileSync(filename, JSON.stringify(users_reg_data));
 */
 
-
+console.log(users_reg_data);
+}else{
+   console.log(filename + 'does not exist');
+}
 
 //GETS TO LOGIN PAGE
-app.get("/login.html", function (request, response) {
-   // Give a simple login form (responds by generating a login page) and requests information inputted by this form 
-   str = `
-   <html lang="en">
-   <link href="pretty.css" rel="stylesheet">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Document</title>
-</head>
-<h1>Sunrise Flower Shop</h1>
-<h2>To continue purchasing, please login below!</h2>
-<body>
-<form action="" method="POST"> 
-   <div>
-   <input type="text" name="username" size="40" placeholder="enter username" ><br /> 
-   <input type="password" name="password" size="40" placeholder="enter password"><br />
-   <input type="submit" value="Submit" id="submit">  </div>
-   </form>  
-</body>
-<h2>Are you a new user? Click below to register on our site!</h2>
-<body>
-<div>
-<form action="./registration.html">
-<input type="submit" value="Register Here" id="register_here" name="register_here">
-</form>
-</div>
-</body>
-</html>
-   `;
-   response.send(str);
+app.get("public/login.html", function (request, response) {
+   
 });
 
 
@@ -122,63 +100,20 @@ app.post("/login.html", function (request, response) {// Process login form POST
     if(typeof users_reg_data[the_username] != 'undefined'){ //To check if the username exists in the json data
         if( users_reg_data[the_username].password ==request.body.password){
                  //make the query string of prod quant needed for invoice
-                 theQuantQuerystring = qs.stringify([the_username]);
-                 response.redirect('/invoice.html?' + theQuantQuerystring);
+                 theQuantQuerystring = qs.stringify([the_username]); 
+                 response.redirect('/invoice.html?' + theQuantQuerystring); //ADDS USERNAME INFO TO INVOICE
         } else {
             response.redirect('/login.html') //IN ASSIGNMENT, SHOW THERE IS AN ERROR
         }
     }
 });
 
-app.get("/registration.html", function (request, response) {
-   // Give a simple register form
-   
-   str = `
-   <html lang="en">
-   <link href="pretty.css" rel="stylesheet">
-<head>
-   <h1>Sunrise Flower Shop</h1>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Document</title>
-</head>
-<body>
-<body>
-<div>
-<form  method="POST" action="./invoice.html" onsubmit=validatePassword() >
-<input type="text" name="fullname" size="40" pattern="[a-zA-Z]+[ ]+[a-zA-Z]+" maxlength="30" placeholder="Enter First & Last Name"><br />
-<input type="text" name="username" size="40" pattern=".[a-z0-9]{4,10}" required title="Either 4-10 Characters & only numbers/letters" placeholder="Enter Username" ><br />
-<input type="email" name="email" size="40" placeholder="Enter Email" pattern="[a-z0-9._]+@[a-z0-9]+\.[a-z]{3,}$" required title="Error!! Make sure your email contains the following... 1. @ sign 2. Three letters in domain name 3. Only numbers/characters and _ & . may be used. "><br />
-<input type="password" id="password" name="password"  size="40" pattern=".{6,}" required title="6 characters minimum" placeholder="Enter Password" ><br />
-<input type="password" id="repeat_password" name="repeat_password" size="40" pattern=".{6,}" required title="6 characters minimum" placeholder="Enter Password Again"><br />
-<input type="submit" value="Submit" id="submit">
-</form></div>
-</body>
-</html>
-   `;
-   response.send(str);
-});
+app.get("public/registration.html", function (request, response){});
 
 app.post("/registration.html", function (request, response) {
    // process a simple register form
 
-   //Validate
-   var password = document.getElementById("password") //turns password into an object
-   ,repeat_password = document.getElementById("repeat_password"); //turns repeat password into an object
-   
-   function validatePassword(){ //DOES NOT WORK
-     if(password.value != repeat_password.value) { //if password is not equal to repeat password, say passwords don't match
-       alert("Passwords Don't Match");
-   response.redirect('/registration.html') 
-     } 
-   else{
-      response.redirect('/invoice.html') 
-   }
-   
-   }
-    validatePassword();
-
+ 
    //Save new user to file name (users_reg_data)
    username = request.body.username;
    
@@ -200,7 +135,7 @@ if (errors.length == 0){
 
    fs.writeFileSync(filename, JSON.stringify(users_reg_data));
    
-   response.redirect("/registration.html" + 'try again');
+   response.redirect("public/registration.html" + 'try again');
 
   
 } else {
