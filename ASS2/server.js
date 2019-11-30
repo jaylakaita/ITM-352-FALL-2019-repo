@@ -137,7 +137,7 @@ app.post("/login.html", function (request, response) {
     }
 });
 
-app.get("public/registration.html", function (request, response) {
+app.get("/registration.html", function (request, response) {
    // Give a simple register form
    
    str = `
@@ -152,14 +152,14 @@ app.get("public/registration.html", function (request, response) {
 </head>
 <body>
 <body>
-<div><form  method="POST" action="" onsubmit=validatePassword() >
-   <input type="text" name="fullname" size="40" pattern="[a-zA-Z]+[ ]+[a-zA-Z]+" maxlength="30" placeholder="Enter First & Last Name"><br />
-   <input type="text" name="username" size="40" pattern=".[a-z0-9]{4,10}" required title="Either 4-10 Characters & only numbers/letters" placeholder="Enter Username" ><br />
-   <input type="email" name="email" size="40" placeholder="Enter Email" pattern="[a-z0-9._]+@[a-z0-9]+\.[a-z]{3,}$" required title="Error!! Make sure your email contains the following... 1. @ sign 2. Three letters in domain name 3. Only numbers/characters and _ & . may be used. "><br />
-   <input type="password" id="password" name="password"  size="40" pattern=".{6,}" required title="6 characters minimum" placeholder="Enter Password" ><br />
-   <input type="password" id="repeat_password" name="repeat_password" size="40" pattern=".{6,}" required title="6 characters minimum" placeholder="Enter Password Again"><br />
-
-   <input type="submit" value="Submit" id="submit">
+<div>
+<form  method="POST" action="" onsubmit=validatePassword() >
+<input type="text" name="fullname" size="40" pattern="[a-zA-Z]+[ ]+[a-zA-Z]+" maxlength="30" placeholder="Enter First & Last Name"><br/>
+<input type="text" name="username" size="40" pattern=".[a-z0-9]{4,10}" required title="Length must be 4-10 '<p>" placeholder="Enter Username" ><br />
+<input type="email" name="email" size="40" placeholder="Enter Email" pattern="[a-z0-9._]+@[a-z0-9]+\.[a-z]{3,}$" required title="invalid email address"><br />
+<input type="password" id="password" name="password"  size="40" pattern=".{6,}" required title="6 characters minimum" placeholder="Enter Password" ><br />
+<input type="password" id="repeat_password" name="repeat_password" size="40" pattern=".{6,}" required title="6 characters minimum" placeholder="Enter Password Again"><br />
+<input type="submit" value="Submit" id="submit">
 </form></div>
 </body>
 </html>
@@ -167,8 +167,12 @@ app.get("public/registration.html", function (request, response) {
    response.send(str);
 });
 
-app.post("/registration.html", function (request, response) {// process a simple register form
-
+app.post("/registration.html", function (request, response) {
+   // process a simple register form
+   console.log(flowerquant);
+   the_username= request.body.username;
+    console.log(the_username, "Username is", typeof (users_reg_data[the_username]));
+   
    username = request.body.username;//Save new user to file name (users_reg_data)
    
    errors = [];//Checks to see if username already exists
@@ -185,14 +189,12 @@ if (errors.length == 0){
    users_reg_data[username].password = request.body.password;
    users_reg_data[username].email = request.body.email;
  
+fs.writeFileSync(filename, JSON.stringify(users_reg_data));
+theQuantQuerystring = qs.stringify(flowerquant);
+   response.redirect("/invoice.html?" + theQuantQuerystring + `&username=${the_username}`);
 
-   fs.writeFileSync(filename, JSON.stringify(users_reg_data));
-   
-   response.redirect("/registration.html?" + 'try again');
-
-  
-} else {
-   response.redirect("/invoice.html?");
+} else { 
+   response.redirect('/registration.html?' + 'try again');
 }
    
 });
