@@ -7,8 +7,7 @@ var products = require("./public/product.js"); //uses flower products listed in 
 var filename = 'user_data.json' //Defines the user_data.json array as an object
 var app = express(); //Executes Express
 var qs = require('querystring');
-var qstr =  {};
-
+var qstr = querystring.stringify(request.query);
 
 
 
@@ -94,19 +93,43 @@ app.get("public/login.html", function (request, response) {
 
 
 
-app.post("/login.html", function (request, response) {// Process login form POST and redirect to logged in page if ok, back to login page if not
-    console.log(request.body);
-    the_username= request.body.username;
+app.post("/login.html", function (request, response) {
+   // Process login form POST and redirect to logged in page if ok, back to login page if not
+   console.log(request.body);
+   var qstr = querystring.stringify(request.query);
+    
+    
+    
+    
+    
+    
     if(typeof users_reg_data[the_username] != 'undefined'){ //To check if the username exists in the json data
         if( users_reg_data[the_username].password ==request.body.password){
                  //make the query string of prod quant needed for invoice
                  theQuantQuerystring = qs.stringify([the_username]); 
-                 response.redirect('/invoice.html?' + theQuantQuerystring); //ADDS USERNAME INFO TO INVOICE
-        } else {
-            response.redirect('/login.html') //IN ASSIGNMENT, SHOW THERE IS AN ERROR
+                 response.redirect('/invoice.html?' + qstr); //ADDS USERNAME INFO TO INVOICE
+        
+        
+        
+        
+               } else {
+            response.redirect('/login.html' + qstr) //IN ASSIGNMENT, SHOW THERE IS AN ERROR
         }
     }
-});
+
+
+
+
+
+
+
+
+
+   });
+
+
+
+
 
 app.get("public/registration.html", function (request, response){});
 
@@ -131,15 +154,16 @@ if (errors.length == 0){
    users_reg_data[username].username = request.body.username
    users_reg_data[username].password = request.body.password;
    users_reg_data[username].email = request.body.email;
- 
+
+ var qstr = querystring.stringify(request.query);
 
    fs.writeFileSync(filename, JSON.stringify(users_reg_data));
    
-   response.redirect("public/registration.html" + 'try again');
+   response.redirect("public/registration.html" + 'try again' + qstr);
 
   
 } else {
-   response.redirect("/invoice.html");
+   response.redirect("/invoice.html" + qstr);
 }
    
 });
