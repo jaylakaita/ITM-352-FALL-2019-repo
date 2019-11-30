@@ -12,12 +12,16 @@
     window.stop();
   }
   
-
+  if(params.has('[`quantity${i}`]')){}
+        else{
+        alert('you must enter the amount of flowers you want to purchase');
+        window.location = 'flowershop.html';
+        window.stop();} 
   
   
 
 
-  var quantities = [];
+var quantities = [];
   if (params.has('purchase_submit')) {
     for (i = 0; i < products.length; i++) {
       if (params.has(`quantity${i}`)) {

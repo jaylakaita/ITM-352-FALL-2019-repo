@@ -154,7 +154,7 @@ app.get("/registration.html", function (request, response) {
 <body>
 <div>
 <form  method="POST" action="" onsubmit=validatePassword() >
-<input type="text" name="fullname" size="40" pattern="[a-zA-Z]+[ ]+[a-zA-Z]+" maxlength="30" require title = "add space between first and last name" placeholder="Enter First & Last Name"><br/>
+<input type="text" name="fullname" size="40" pattern="[a-zA-Z]+[ ]+[a-zA-Z]+" maxlength="30" require title = "add space between first and last name"placeholder="Enter First & Last Name"><br/>
 <input type="text" name="username" size="40" pattern=".[a-z0-9]{4,10}" required title="Length must be 4-10, only numbers and alphabet" placeholder="Enter Username" ><br />
 <input type="email" name="email" size="40" placeholder="Enter Email" pattern="[a-z0-9._]+@[a-z0-9]+\.[a-z]{3,}$" required title="invalid email address"><br />
 <input type="password" id="password" name="password"  size="40" pattern=".{6,}" required title="6 characters minimum" placeholder="Enter Password" ><br />
