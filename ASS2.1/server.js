@@ -13,13 +13,13 @@ var qstr =  {};
 
 
 
-var user_product_quantities = {};
+var flowerquant = {};
 app.use(myParser.urlencoded({ extended: true }));
 //intercept purchase submission form, if good give an invoice, otherwise send back to order page
 app.get("/process_page", function (request, response) {
    //check if quantity data is valid
    //look up request.query
-   user_product_quantities = request.query;
+   flowerquant = request.query;
    params = request.query;
    console.log(params);
    if (typeof params['purchase_submit'] != 'undefined') {
@@ -127,7 +127,7 @@ app.post("/login.html", function (request, response) {
        //To check if the username exists in the json data
         if( users_reg_data[the_username].password ==request.body.password){
                  //make the query string of prod quant needed for invoice
-                 theQuantQuerystring = qs.stringify(user_product_quantities); 
+                 theQuantQuerystring = qs.stringify(flowerquant); 
                  response.redirect('/invoice.html?' + theQuantQuerystring + `&username=${the_username}`); 
                  //ADDS USERNAME INFO TO INVOICE
         } else {
