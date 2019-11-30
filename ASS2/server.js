@@ -154,11 +154,11 @@ app.get("/registration.html", function (request, response) {
 <body>
 <div>
 <form  method="POST" action="" onsubmit=validatePassword() >
-<input type="text" name="fullname" size="40" pattern="[a-zA-Z]+[ ]+[a-zA-Z]+" maxlength="30" placeholder="Enter First & Last Name"><br/>
-<input type="text" name="username" size="40" pattern=".[a-z0-9]{4,10}" required title="Length must be 4-10 '<p>" placeholder="Enter Username" ><br />
+<input type="text" name="fullname" size="40" pattern="[a-zA-Z]+[ ]+[a-zA-Z]+" maxlength="30" require title = "add space between first and last name" placeholder="Enter First & Last Name"><br/>
+<input type="text" name="username" size="40" pattern=".[a-z0-9]{4,10}" required title="Length must be 4-10, only numbers and alphabet" placeholder="Enter Username" ><br />
 <input type="email" name="email" size="40" placeholder="Enter Email" pattern="[a-z0-9._]+@[a-z0-9]+\.[a-z]{3,}$" required title="invalid email address"><br />
 <input type="password" id="password" name="password"  size="40" pattern=".{6,}" required title="6 characters minimum" placeholder="Enter Password" ><br />
-<input type="password" id="repeat_password" name="repeat_password" size="40" pattern=".{6,}" required title="6 characters minimum" placeholder="Enter Password Again"><br />
+<input type="password" id="repeat_password" name="repeat_password" size="40" pattern=".{6,}" required title="6 characters minimum" placeholder="Re-enter Password"><br />
 <input type="submit" value="Submit" id="submit">
 </form></div>
 </body>
@@ -171,7 +171,7 @@ app.post("/registration.html", function (request, response) {
    // process a simple register form
    console.log(flowerquant);
    the_username= request.body.username;
-    console.log(the_username, "Username is", typeof (users_reg_data[the_username]));
+   console.log(the_username, "Username is", typeof (users_reg_data[the_username]));
    
    username = request.body.username;//Save new user to file name (users_reg_data)
    
@@ -190,11 +190,12 @@ if (errors.length == 0){
    users_reg_data[username].email = request.body.email;
  
 fs.writeFileSync(filename, JSON.stringify(users_reg_data));
-theQuantQuerystring = qs.stringify(flowerquant);
-   response.redirect("/invoice.html?" + theQuantQuerystring + `&username=${the_username}`);
+response.redirect('/registration.html?' + 'try again');
 
 } else { 
-   response.redirect('/registration.html?' + 'try again');
+   
+   theQuantQuerystring = qs.stringify(flowerquant);
+   response.redirect("/invoice.html?" + theQuantQuerystring + `&username=${the_username}`);
 }
    
 });
