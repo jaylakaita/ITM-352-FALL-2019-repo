@@ -13,12 +13,13 @@ var qstr =  {};
 
 
 
-
+var user_product_quantities = {};
 app.use(myParser.urlencoded({ extended: true }));
 //intercept purchase submission form, if good give an invoice, otherwise send back to order page
 app.get("/process_page", function (request, response) {
    //check if quantity data is valid
    //look up request.query
+   user_product_quantities = request.query;
    params = request.query;
    console.log(params);
    if (typeof params['purchase_submit'] != 'undefined') {
@@ -116,16 +117,22 @@ app.get("/login.html", function (request, response) {
 
 
 
-app.post("/login.html", function (request, response) {// Process login form POST and redirect to logged in page if ok, back to login page if not
-    console.log(request.body);
+app.post("/login.html", function (request, response) {
+   // Process login form POST and redirect to logged in page if ok, back to login page if not
+    console.log(flowerquant);
     the_username= request.body.username;
-    if(typeof users_reg_data[the_username] != 'undefined'){ //To check if the username exists in the json data
+    console.log(the_username, "Username is", typeof (users_reg_data[the_username]));
+    //validate login data
+    if(typeof users_reg_data[the_username] != 'undefined'){ 
+       //To check if the username exists in the json data
         if( users_reg_data[the_username].password ==request.body.password){
                  //make the query string of prod quant needed for invoice
-                 theQuantQuerystring = qs.stringify([the_username]); 
-                 response.redirect('/invoice.html?' + theQuantQuerystring); //ADDS USERNAME INFO TO INVOICE
+                 theQuantQuerystring = qs.stringify(user_product_quantities); 
+                 response.redirect('/invoice.html?' + theQuantQuerystring + `&username=${the_username}`); 
+                 //ADDS USERNAME INFO TO INVOICE
         } else {
-            response.redirect('/login.html?') //IN ASSIGNMENT, SHOW THERE IS AN ERROR
+            response.redirect('/login.html?') 
+            //IN ASSIGNMENT, SHOW THERE IS AN ERROR
         }
     }
 });
