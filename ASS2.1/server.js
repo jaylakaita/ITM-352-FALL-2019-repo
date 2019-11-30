@@ -8,12 +8,12 @@ var filename = 'user_data.json' //Defines the user_data.json array as an object
 var app = express(); //Executes Express
 var qs = require('querystring');
 var qstr =  {};
-
-
-
-
-
 var flowerquant = {};
+
+
+
+
+
 app.use(myParser.urlencoded({ extended: true }));
 //intercept purchase submission form, if good give an invoice, otherwise send back to order page
 app.get("/process_page", function (request, response) {

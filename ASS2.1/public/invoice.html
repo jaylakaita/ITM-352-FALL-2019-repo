@@ -2,6 +2,16 @@
 <script>
  //invoice loads after functions in flower shop are checked 
   let params = (new URL(document.location)).searchParams;
+  
+  if(params.has('username')){
+    alert(`thank you for shopping with us ${params.get('username')}`);
+  }
+  else{
+    alert('you must login or register before checkout');
+    window.location = 'login.html';
+    window.stop();
+  }
+  
   var quantities = [];
   if (params.has('purchase_submit')) {
     for (i = 0; i < products.length; i++) {
@@ -64,7 +74,7 @@ linked what is in the table to the product.js where all the prices items and pic
           }
         }
         // Compute tax 
-        var tax_rate = 0.0575
+        var tax_rate = 0.04712;
         var tax = subtotal * tax_rate;
         // Compute shipping
         if (subtotal >= 100) {
