@@ -13,7 +13,6 @@ var flowerquant = {}; //Defines flowerquant as a variable that requests the quer
 
 
 
-
 app.use(myParser.urlencoded({ extended: true }));
 //intercept purchase submission form, if good give an invoice, otherwise send back to order page
 app.get("/process_page", function (request, response) {
@@ -119,7 +118,7 @@ app.post("/login.html", function (request, response)
                theQuantQuerystring = qs.stringify(flowerquant); //make the query string of prod quant needed for invoice
                response.redirect('/invoice.html?' + theQuantQuerystring + `&username=${the_username}`); //Adds username & quantity to invoice
       } else {
-         response.send('invalid login');
+      response.send("invalid login");
       response.redirect('/login.html?') //Send back to login page if error
       }
   }
