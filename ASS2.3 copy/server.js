@@ -85,6 +85,7 @@ app.get("/login.html", function (request, response) {
 </head>
 <h1>Sunrise Flower Shop Login</h1>
 <h2>To continue purchasing, please login below!</h2>
+
 <body>
 <form action="" method="POST"> 
    <div>
@@ -108,19 +109,21 @@ app.get("/login.html", function (request, response) {
 
 
   // Process login form POST and redirect to invoice page if ok and back to login page if not
-app.post("/login.html", function (request, response) {
-    console.log(flowerquant);
-    the_username= request.body.username;
-    //Validate login data
-    if(typeof users_reg_data[the_username] != 'undefined'){   //To check if the username exists in the json data
-        if( users_reg_data[the_username].password ==request.body.password){
-                 theQuantQuerystring = qs.stringify(flowerquant); //make the query string of prod quant needed for invoice
-                 response.redirect('/invoice.html?' + theQuantQuerystring + `&username=${the_username}`); //Adds username & quantity to invoice
-        } else {
-            response.redirect('/login.html?') //Send back to login page if error
-        }
-    }
-});
+app.post("/login.html", function (request, response) 
+{
+  console.log(flowerquant);
+  the_username= request.body.username;
+  //Validate login data
+  if(typeof users_reg_data[the_username] != 'undefined'){   //To check if the username exists in the json data
+      if( users_reg_data[the_username].password ==request.body.password){
+               theQuantQuerystring = qs.stringify(flowerquant); //make the query string of prod quant needed for invoice
+               response.redirect('/invoice.html?' + theQuantQuerystring + `&username=${the_username}`); //Adds username & quantity to invoice
+      } else {
+         response.send('invalid login');
+      response.redirect('/login.html?') //Send back to login page if error
+      }
+  }
+} );
 
 app.get("/registration.html", function (request, response) {
    // Give a simple registration form (responds by sending to the registration html page) and requests information inputted by this form 
