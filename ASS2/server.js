@@ -117,8 +117,7 @@ app.get("/login.html", function (request, response) {
 
 
 
-app.post("/login.html", function (request, response) {
-   // Process login form POST and redirect to logged in page if ok, back to login page if not
+app.post("/login.html", function (request, response) {// Process login form POST and redirect to logged in page if ok, back to login page if not
     console.log(flowerquant);
     the_username= request.body.username;
     console.log(the_username, "Username is", typeof (users_reg_data[the_username]));
@@ -188,7 +187,8 @@ if (errors.length == 0){
    users_reg_data[username].username = request.body.username
    users_reg_data[username].password = request.body.password;
    users_reg_data[username].email = request.body.email;
- 
+   users_reg_data[username].fullname = request.body.fullname;
+   
 fs.writeFileSync(filename, JSON.stringify(users_reg_data));
 response.redirect('/registration.html?' + 'try again');
 
