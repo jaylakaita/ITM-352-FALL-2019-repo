@@ -1,7 +1,7 @@
 var events = [
     { 
      "Event" : "Community Service",
-     "Points" : 125
+     "Points" : 400
      },
      
      {
@@ -20,4 +20,4 @@ var events = [
      }
  ];
 
- //me and pree did this
+ //jayla and pree did this
