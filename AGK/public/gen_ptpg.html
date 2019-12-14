@@ -1,3 +1,6 @@
+<script>
+let params = (new URL(document.location)).searchParams;
+</script>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +10,6 @@
 </head>
 <body>
     <img src="images/GK.jpeg">
-    <h2>You currently have</h2>
+    <h2><script>document.write(`You currently have ${params.get('totalpts')}`);</script></h2>
 </body>
 </html>
