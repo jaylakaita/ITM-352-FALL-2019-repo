@@ -94,10 +94,6 @@ app.post("/eb_gklist.html", function (request, response) {
 }
 );*/
 
-
-
-
-
 app.all('*', function (request, response, next) {
   console.log(request.method + ' to ' + request.path); //respond to HTTP request by sending type of request and the path of request
   next(); //calls the middleware function
