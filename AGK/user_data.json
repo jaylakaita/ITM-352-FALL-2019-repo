@@ -33,6 +33,8 @@
         "password": "123456",
         "email": "jaylakai@hawaii.edu",
         "fullname": "Jayla Kaita",
-        "totalpts": 0
+        "totalpts": 0,
+        "username": "jaylakai",
+        "points": "100"
     }
 }

@@ -82,28 +82,6 @@ app.post("/eb_login.html", function (request, response) {
    
 });*/
 
-
-//add points to a current member
-app.post("/eb_ptlog.html", function (request, response) {
-  the_username = request.body.username; //makes username 
-  errors= {};
-  
-  //Validate login data
-  if (Object.keys(errors).length == 0){
-users_reg_data[the_username].username = request.body.username
-console.log("1");
-users_reg_data[the_username].points = request.body.points
-response.send(users_reg_data[the_username].points);
-
-fs.writeFileSync(filename, JSON.stringify(users_reg_data)); //Writes registration info into the userdata json file
-console.log("3");
- response.redirect("/eb_gklist.html?" ); //If all good, send to the invoice page with username/quantity info
-      }
-  }
-);
-
-
-
 app.all('*', function (request, response, next) {
   console.log(request.method + ' to ' + request.path); //respond to HTTP request by sending type of request and the path of request
   next(); //calls the middleware function
