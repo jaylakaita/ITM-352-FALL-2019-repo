@@ -65,9 +65,22 @@ app.post("/eb_login.html", function (request, response) {
 
 });
 
-app.get("/process_page", function (request, response) {
+// *********************** DID NOT WORK (GK MEMBER LIST)*******************************
+
+/*app.post("/eb_gklist.html", function (request, response) {
+  the_username = request.body.username;
+  document.write(`
+        <tr>
+        <td> ${users_reg_data[the_username].fullname}</td>
+        <td> ${users_reg_data[the_username].totalpts}</td>
+        </tr>
+  `);
+});*/
+
+// ********************* TRIED SOMETHING ELSE DID NOT WORK ****************************
+/*app.get("/process_page", function (request, response) {
    
-});
+});*/
 
 
 app.all('*', function (request, response, next) {
