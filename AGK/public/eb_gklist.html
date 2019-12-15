@@ -13,6 +13,7 @@
   <li><a href="./eb_regpg.html">Register New Member</a></li>
   <li><a href="./eb_ptlog.html">Add Points to a Member</a></li>
 </ul>
+
 <body>
   <table style="width:100%">
     <tr>
@@ -20,7 +21,12 @@
       <th>Points</th>
     </tr>
     <script>
-      fs = require('fs'); //Use the file system module 
+
+
+
+      //*************************** FIRST TRY DID NOT WORK ***********************
+
+      /*fs = require('fs'); //Use the file system module
 
       //returns a boolean (true or false) (Opens file only if it exists)
       if (fs.existsSync(filename)) {
@@ -34,12 +40,39 @@
         the_username = request.body.username;
         document.write(`
               <tr>
-              <td ${users_reg_data[the_username].fullname}</td>
-              <td ${users_reg_data[the_username].totalpts}</td>
+              <td> ${users_reg_data[the_username].fullname}</td>
+              <td> ${users_reg_data[the_username].totalpts}</td>
               </tr>
         `);
       });
+      */
+
+
+
+
+      //*************************** SECOND TRY DID NOT WORK ***********************
+      
+      src = "./user_data.json"
     </script>
+    <form name="members_view_form" action="process_page" method="GET">
+      <header>
+        <h1>Golden Key Members</h1>
+      </header>
+      <div>
+        <main id="members_main_display">
+          <script>
+            for (i = 0; i < users_reg_data.length; i++) {
+              document.write(`
+                        <tr>
+              <td> ${users_reg_data[the_username].fullname}</td>
+              <td> ${users_reg_data[the_username].totalpts}</td>
+              </tr>`)
+            }
+          </script>
+        </main>
+      </div>
+
+    </form>
   </table>
 </body>
 

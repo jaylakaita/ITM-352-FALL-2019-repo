@@ -65,38 +65,14 @@ app.post("/eb_login.html", function (request, response) {
 
 });
 
+app.get("/process_page", function (request, response) {
+   
+});
 
-
-/*fs = require('fs'); //Use the file system module 
-
-//returns a boolean (true or false) (Opens file only if it exists)
-if (fs.existsSync(filename)) {
-  stats = fs.statSync(filename) //gets the stats of your file
-
-
-  data = fs.readFileSync(filename, 'utf-8'); //Reads the file and returns back with data and then continues with code as requested.
-  users_reg_data = JSON.parse(data); //Parses data in order to turn string into an object
-}
-app.post("/eb_gklist.html", function (request, response) {
-  the_username = request.body.username;
-  document.write(`
-  <table style="width:100%">
-  <tr>
-      <th>"Username"</th>
-      <th>'Points'</th>
-  </tr>
-  <tr>
-    <td ${users_reg_data[the_username].fullname}</td>
-    <td ${users_reg_data[the_username].totalpts}</td>
-  </tr>
-  </table>
-  `);
-}
-);*/
 
 app.all('*', function (request, response, next) {
   console.log(request.method + ' to ' + request.path); //respond to HTTP request by sending type of request and the path of request
   next(); //calls the middleware function
 });
 app.use(express.static('./public')); //sets up a request to respond to GET and looks for the file from public (sets up static web server)
-app.listen(8080, () => console.log(`listening on port 8080`)); //listens on Port 8080
+app.listen(8082, () => console.log(`listening on port 8080`)); //listens on Port 8080
