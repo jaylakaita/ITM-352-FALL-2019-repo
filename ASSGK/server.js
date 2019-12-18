@@ -82,17 +82,23 @@ app.post("/ptsadditionpage.html", function (request, response) {
 }
 );
 
+
 //DISPLAY GK MEMBER LIST
 app.post("/Total_ptpg.html", function (request, response) {
     the_username = request.body.username; //makes username 
-    response.send(users_reg_data[the_username]);
-        });
-    //response.send(users_reg_data.username[i]); Attempt to get only usernames to show up but i is not defined
-    //response.send (users_reg_data[the_username].email}; attempt to get emails but nothing shows up
-    //response.send(users_reg_data.password); Doesn't work
-    //response.send(users_reg_data['itm352'].password); We only can retrieve the password from a specific user rather than all users
-    // How to format using server????
-
+  str = `<table border=1>`;
+  for (i = 0; i < users_reg_data.length; i++) {
+      str += `<tr><td>${users_reg_data[i].email}</td ></tr > `;
+      str += `<tr><td>${users_reg_data[i].fullname}</td ></tr > `;
+      str += `<tr><td>${users_reg_data[i].points}</td ></tr > `;
+      str += '</table>';
+      response.send(str);}
+//   response.send(users_reg_data.username[i]); Attempt to get only usernames to show up but i is not defined
+// response.send (users_reg_data[the_username].email}; attempt to get emails but nothing shows up
+//response.send(users_reg_data.password); Doesn't work
+//response.send(users_reg_data['itm352'].password); We only can retrieve the password from a specific user rather than all users
+// How to format using server????
+});
 
 
 
@@ -149,7 +155,7 @@ app.post("/Total_ptpg.html", function (request, response) {
       
      fs.writeFileSync(filename, JSON.stringify(users_reg_data)); //Writes registration info into the userdata json file
      
-        response.redirect("/Total_ptpg.html?" + `&username=${username}`); //If all good, send to the total point page with username/quantity info
+        response.redirect("/Total_ptpg.html?" + `& username=${ username } `); //If all good, send to the total point page with username/quantity info
      } else { 
         qstring= qs.stringify(request.body)+"&"+qs.stringify(errors); 
         response.redirect('/registration.html?' + qstring ); //if there are errors, send back to registration page to retype
