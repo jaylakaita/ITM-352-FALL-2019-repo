@@ -13,7 +13,9 @@
     "kazman": {
         "name": "Rick Kazman",
         "password": "kazmanpassword",
-        "email": "kazman@hawaii.edu"
+        "email": "kazman@hawaii.edu",
+        "username": "kazman",
+        "points": "3000"
     },
     "itm352": {
         "name": "ITM 352",
@@ -25,7 +27,8 @@
         "password": "doggy600",
         "email": "msyago@hawaii.edu",
         "fullname": "Melissa Yago",
-        "usertype": "Webmaster"
+        "usertype": "Webmaster",
+        "points": "342"
     },
     "jaylakai": {
         "username": "jaylakai",
@@ -33,4 +36,5 @@
         "email": "jaylakai@hawaii.edu",
         "fullname": "Jayla Kaita",
         "usertype": "regular"
-}}
+    }
+}

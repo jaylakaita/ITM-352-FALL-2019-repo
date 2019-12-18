@@ -65,22 +65,23 @@ app.post("/eb_login.html", function (request, response) {
 
 });
 
-// *********************** DID NOT WORK (GK MEMBER LIST)*******************************
 
-/*app.post("/eb_gklist.html", function (request, response) {
-  the_username = request.body.username;
-  document.write(`
-        <tr>
-        <td> ${users_reg_data[the_username].fullname}</td>
-        <td> ${users_reg_data[the_username].totalpts}</td>
-        </tr>
-  `);
-});*/
+//DISPLAY GK MEMBER LIST
+app.post("/eb_gklist.html", function (request, response) {
+  the_username = request.body.username; //makes username 
+response.send(users_reg_data);
 
-// ********************* TRIED SOMETHING ELSE DID NOT WORK ****************************
-/*app.get("/process_page", function (request, response) {
-   
-});*/
+ //response.send(users_reg_data.username); //Attempt to get only usernames to show up but i is not defined
+// response.send (users_reg_data[the_username].email}; attempt to get emails but nothing shows up
+//response.send(users_reg_data.password); Doesn't work
+//response.send(users_reg_data['itm352'].password); //We only can retrieve the password from a specific user rather than all users
+// How to format using server????
+});
+
+
+
+
+
 
 app.all('*', function (request, response, next) {
   console.log(request.method + ' to ' + request.path); //respond to HTTP request by sending type of request and the path of request

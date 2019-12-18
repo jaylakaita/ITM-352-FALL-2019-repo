@@ -16,64 +16,22 @@
 
 <body>
   <table style="width:100%">
+  <tbody>
     <tr>
       <th>Username</th>
       <th>Points</th>
     </tr>
-    <script>
-
-
-
-      //*************************** FIRST TRY DID NOT WORK ***********************
-
-      /*fs = require('fs'); //Use the file system module
-
-      //returns a boolean (true or false) (Opens file only if it exists)
-      if (fs.existsSync(filename)) {
-        stats = fs.statSync(filename) //gets the stats of your file
-
-
-        data = fs.readFileSync(filename, 'utf-8'); //Reads the file and returns back with data and then continues with code as requested.
-        users_reg_data = JSON.parse(data); //Parses data in order to turn string into an object
-      }
-      app.post("/eb_gklist.html", function (request, response) {
-        the_username = request.body.username;
-        document.write(`
-              <tr>
-              <td> ${users_reg_data[the_username].fullname}</td>
-              <td> ${users_reg_data[the_username].totalpts}</td>
-              </tr>
-        `);
-      });
-      */
-
-
-
-
-      //*************************** SECOND TRY DID NOT WORK ***********************
-      
-      src = "./user_data.json"
-    </script>
-    <form name="members_view_form" action="process_page" method="GET">
-      <header>
-        <h1>Golden Key Members</h1>
-      </header>
-      <div>
-        <main id="members_main_display">
-          <script>
-            for (i = 0; i < users_reg_data.length; i++) {
-              document.write(`
-                        <tr>
-              <td> ${users_reg_data[the_username].fullname}</td>
-              <td> ${users_reg_data[the_username].totalpts}</td>
-              </tr>`)
-            }
-          </script>
-        </main>
-      </div>
-
-    </form>
+    <tr>
+      <form name="List" method="post">
+        <div>
+          
+            <td><script>$(users_reg_data[the_username].fullname);</script></td>
+            <td><script>$(users_reg_data[the_username].totalpts);</script></td>
+          
+          <input type="submit" value="submit" id="submit"></div>
+      </form>
+    </tr>
+  </tbody>
   </table>
 </body>
-
 </html>

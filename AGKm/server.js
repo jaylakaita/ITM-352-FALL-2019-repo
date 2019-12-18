@@ -6,7 +6,6 @@ var filename = 'user_data.json' //Defines the user_data.json array as an object
 var app = express(); //Executes Express
 
 
-
 fs = require('fs'); //Use the file system module 
 app.use(myParser.urlencoded({ extended: true }));
 //returns a boolean (true or false) (Opens file only if it exists)
@@ -15,7 +14,7 @@ if (fs.existsSync(filename)) {
 
 
     data = fs.readFileSync(filename, 'utf-8'); //Reads the file and returns back with data and then continues with code as requested.
-
+   
     users_reg_data = JSON.parse(data); //Parses data in order to turn string into an object
 }
 
@@ -40,7 +39,7 @@ app.post("/login.html", function (request, response) {
             response.send('Invalid Login: Please hit the back button and try again'); //if password isn't equal to password existing in jsonn data, show error message
 
         }
-
+     
 
     }
 
@@ -51,46 +50,46 @@ app.post("/login.html", function (request, response) {
 
 app.post("/webmasterLogin.html", function (request, response) {
     the_username = request.body.username; //makes username 
-
+    
     console.log("Username=" + the_username);
     //Validate login data
     if (typeof users_reg_data[the_username] != 'undefined') {   //To check if the username exists in the json data
         the_usertype = users_reg_data[the_username].usertype;
         if (the_usertype == 'Webmaster') {   //To check if the username exists in the json data 
-
-            response.redirect('/master_mainpg.html?' + `&username=${the_username}`);
+       
+        response.redirect('/master_mainpg.html?' + `&username=${the_username}`); 
         }
     }
 });
 
 app.post("/ptsadditionpage.html", function (request, response) {
     the_username = request.body.username; //makes username 
-    errors = {};
-
+    errors= {};
+    
     //Validate login data
-    if (Object.keys(errors).length == 0) {
-        users_reg_data[the_username].username = request.body.username
-        console.log("1");
-        users_reg_data[the_username].points = request.body.points
-        response.send(users_reg_data[the_username].points);
-
-        fs.writeFileSync(filename, JSON.stringify(users_reg_data)); //Writes registration info into the userdata json file
-        console.log("3");
-        response.redirect("/Total_ptpg.html?"); //If all good, send to the invoice page with username/quantity info
+    if (Object.keys(errors).length == 0){
+users_reg_data[the_username].username = request.body.username
+console.log("1");
+users_reg_data[the_username].points = request.body.points
+response.send(users_reg_data[the_username].points);
+  
+fs.writeFileSync(filename, JSON.stringify(users_reg_data)); //Writes registration info into the userdata json file
+console.log("3");
+   response.redirect("/Total_ptpg.html?" ); //If all good, send to the invoice page with username/quantity info
+        }
     }
-}
 );
 
 //DISPLAY GK MEMBER LIST
 app.post("/Total_ptpg.html", function (request, response) {
     the_username = request.body.username; //makes username 
-    src="./user_data.json"
-    (users_reg_data[the_username].points);
-    //response.send(users_reg_data.username[i]); Attempt to get only usernames to show up but i is not defined
-    //response.send (users_reg_data[the_username].email}; attempt to get emails but nothing shows up
-    //response.send(users_reg_data.password); Doesn't work
-    //response.send(users_reg_data['itm352'].password); We only can retrieve the password from a specific user rather than all users
-    // How to format using server????
+  response.send(users_reg_data);
+
+   //response.send(users_reg_data.username); //Attempt to get only usernames to show up but i is not defined
+// response.send (users_reg_data[the_username].email}; attempt to get emails but nothing shows up
+//response.send(users_reg_data.password); Doesn't work
+//response.send(users_reg_data['itm352'].password); //We only can retrieve the password from a specific user rather than all users
+// How to format using server????
 });
 
 

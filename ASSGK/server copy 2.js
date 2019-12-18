@@ -61,7 +61,23 @@ app.post("/webmasterLogin.html", function (request, response) {
     }
 });
 
-
+app.post("/ptsadditionpage.html", function (request, response) {
+    the_username = request.body.username; //makes username 
+    errors= {};
+    
+    //Validate login data
+    if (Object.keys(errors).length == 0){
+users_reg_data[the_username].username = request.body.username
+console.log("1");
+users_reg_data[the_username].points = request.body.points
+response.send(users_reg_data[the_username].points);
+  
+fs.writeFileSync(filename, JSON.stringify(users_reg_data)); //Writes registration info into the userdata json file
+console.log("3");
+   response.redirect("/Total_ptpg.html?" ); //If all good, send to the invoice page with username/quantity info
+        }
+    }
+);
 
 
 app.all('*', function (request, response, next) {
@@ -74,24 +90,3 @@ app.listen(8080, () => console.log(`listening on port 8080`)); //listens on Port
 
 
 
-/*
-   if (typeof users_reg_data[the_username].password == request.body.password) {
-                if (typeof users_reg_data[the_username].username == request.body.username) {
-                    response.redirect('/master_mainpg.html?' + `&username=${the_username}`); //Adds username to Total Points Page
-                }
-
-                else {
-                    response.send('Invalid Login: Please hit the back button and try again'); //if password isn't equal to password existing in jsonn data, show error message
-
-                }
-
-
-            }
-
-        }
-    }
-});
-
-
-
-*/
