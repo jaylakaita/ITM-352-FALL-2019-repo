@@ -74,8 +74,8 @@ app.listen(8080, () => console.log(`listening on port 8080`)); //listens on Port
 
 
 
-
-   /*if (typeof users_reg_data[the_username].password == request.body.password) {
+/*
+   if (typeof users_reg_data[the_username].password == request.body.password) {
                 if (typeof users_reg_data[the_username].username == request.body.username) {
                     response.redirect('/master_mainpg.html?' + `&username=${the_username}`); //Adds username to Total Points Page
                 }
@@ -84,6 +84,14 @@ app.listen(8080, () => console.log(`listening on port 8080`)); //listens on Port
                     response.send('Invalid Login: Please hit the back button and try again'); //if password isn't equal to password existing in jsonn data, show error message
 
                 }
-};*/
 
 
+            }
+
+        }
+    }
+});
+
+
+
+*/

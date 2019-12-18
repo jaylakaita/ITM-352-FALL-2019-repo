@@ -132,7 +132,7 @@ if (errors.length == 0){
  })
  
  app.get('/set_cookie', function (request,response) {
-response.cookie('myname', 'Melissa Yago', {maxAge: 5*1000}).send('cookie set');
+response.cookie('myname', 'Jayla Kaita', {maxAge: 5*1000}).send('cookie set');
  });
 
  app.get('/use_cookie', function (request,response) {

@@ -16,57 +16,13 @@
     </tr>
     <form name="List" method="POST"> 
             <div>
-          <td>${users_reg_data[the_username].fullname}</td>
-              <td> ${users_reg_data[the_username].totalpts}</td>
+          <td ${users_reg_data[the_username].fullname}</td>
+              <td ${users_reg_data[the_username].totalpts}</td>
                 <input type="submit" value="submit" id="submit">
             </div>
         </form>
   
   </table>
 </body>
-<html>
-<head>
-<script type="text/javascript"> </script>
- 
-<script>
- 
-    $(function() {
- 
- 
-   var people = [];
- 
-   $.getJSON('user_data.json', function(data) {
-       $.each(data.fullname, function(i, f) {
-          var tblRow = "<tr>" + "<td>" + fullname + "</td>" +
-           "<td>" + email + "</td>" + "<td>" + points + "</td>" + "</tr>"
-           $(tblRow).appendTo("#userdata tbody");
-     });
- 
-   });
- 
-});
-</script>
-</head>
- 
-<body>
- 
-<div class="wrapper">
-<div class="profile">
-   <table id= "userdata" border="2">
-  <thead>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email Address</th>
-            <th>Total Points</th>
-        </thead>
-      <tbody>
- 
-       </tbody>
-   </table>
- 
-</div>
-</div>
- 
-</body>
-</html>
+
 </html>
