@@ -24,35 +24,22 @@ h1 {
   /*pictures of flowers*/
   img
   {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     border: 3px solid rgb(0, 55, 219);
   }
   
   div {
     align-content: center;
     text-align: center;
-    color: palevioletred;
+    color: rgb(0, 55, 219);
   }
   /*purchase submit button*/
   
   input {
+    padding: 10px;
     display: block;
     margin: 0 auto 0 auto;
     color: gold;
   }
-  /*invoice*/
-  table{
-    color: rgb(96, 0, 134);
-    text-align: center;
-    border-color: lavender;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  /*invoice table*/
-  th, td {
-    padding: 5px;
-    text-align: center;
-    color: white;
-    background:  rgb(212, 212, 248);
-  }
+  

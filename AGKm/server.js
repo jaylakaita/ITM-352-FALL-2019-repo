@@ -6,7 +6,6 @@ var filename = 'user_data.json' //Defines the user_data.json array as an object
 var app = express(); //Executes Express
 var qs = require('querystring'); //cannot change anything within the querstring
 
-
 fs = require('fs'); //Use the file system module 
 app.use(myParser.urlencoded({ extended: true }));
 //returns a boolean (true or false) (Opens file only if it exists)
@@ -84,15 +83,14 @@ console.log("3");
 //*****************DISPLAY GK MEMBER LIST*************************
 
 app.post("/Total_ptpg.html", function (request, response) {
-    console.log(users_reg_data[i].email);
+    console.log(strand);
     the_username = request.body.username; //makes username 
   str = `<table border=1>`;
   for (i = 0; i < users_reg_data.length; i++) {
-    str += '<table>';
       str += `<tr><td>${users_reg_data[i].email}</td></tr>`;
       str += `<tr><td>${users_reg_data[i].fullname}</td></tr>`;
       str += `<tr><td>${users_reg_data[i].points}</td></tr>`;
-      str += '</table>';
+      str += `</table>`;
       response.send(str);}
   });
 

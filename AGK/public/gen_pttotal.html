@@ -1,0 +1,77 @@
+<script src="./events_pts.js" type=""></script>
+<script>
+ //invoice loads after functions in flower shop are checked 
+  let params = (new URL(document.location)).searchParams;
+  var quantities = [];
+  if (params.has('purchase_submit')) {
+    for (i = 0; i < events.length; i++) {
+      if (params.has(`quantity${i}`)) {
+        a_qty = params.get(`quantity${i}`);
+        quantities[i] = a_qty;
+      }
+    }
+  } else {
+    document.write('no form submitted');
+  }
+  console.log(quantities);
+/*table to create the invoice
+linked what is in the table to the product.js where all the prices items and pictures are
+*/
+</script>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Total Points</title>
+  <link href="gen_pttotal.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1>Golden Key International Honours Society</h1>
+  </header>
+  
+  <table border="2">
+    <tbody>
+      <tr id="invoice">
+        <th width="43%">Event</th>
+        <th width="11%">Quantity</th>
+        <th width="13%">Points</th>
+        <th width="54%">Points Per Event</th>
+      </tr>
+      <script>
+        grandtotal = 0;
+        for (i = 0; i < events.length; i++) {
+          if (quantities[i] > 0) {
+            // product row
+            extended_price = quantities[i] * events[i].Points
+            grandtotal += extended_price
+            document.write(`
+        <tr>
+          <td width="43%">${events[i].Event}</td>
+          <td align="center" width="11%">${quantities[i]}</td>
+          <td width="13%">${events[i].Points}</td>
+          <td width="54%">${extended_price}</td>
+        </tr>
+        `);
+          }
+        }
+      // Sources: Invoice WOD, Assignment 1 example
+      </script>
+      <tr>
+        <td colspan="3" width="67%"><strong>Total</strong></td>
+        <td width="54%"><strong>
+            <script>document.write(grandtotal);</script></strong></td>
+      </tr>
+    </tbody>
+  </table>
+  <img src="images/GK.jpeg">
+  <footer>
+    <h1>
+      Stay Golden!
+    </h1>
+  </footer>
+</body>
+
+</html>
