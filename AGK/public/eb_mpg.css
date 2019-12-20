@@ -1,4 +1,8 @@
-/**/
+/* Description: A CSS page that styles the webmaster's html pages. */
+
+/*Jayla Kaita & Melissa Yago & Preetha Pant 12/19/19*/
+
+/*the nav bar*/
 ul {
   list-style-type: none;
   margin: 0;
@@ -9,11 +13,11 @@ ul {
   top: 0;
   width: 100%;
 }
-/**/
+/*the nav bar*/
 li {
   float: left;
 }
-/**/
+/*The text in the nav bar*/
 li a {
   display: block;
   color: rgb(0, 55, 219);
@@ -21,11 +25,11 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
 }
-/**/
+/*changes the color of the nav bar when you hover over the different links*/
 li a:hover:not(.active) {
   background-color: rgb(255, 196, 0);
 }
-/**/
+/*when you currently */
 .active {
   background-color: white;
 }
