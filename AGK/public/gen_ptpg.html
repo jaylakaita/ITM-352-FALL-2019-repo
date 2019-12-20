@@ -1,7 +1,12 @@
-<script src="./events_pts.js">
-
-
-    //within the head i linked the css to the the display page</script>
+<script>
+        /*Description: Points Calculation page for the Golden Key General Members
+        only members that login through the general login page have access to the points calculated page
+        
+        Code is adapted from previous Assignment 2
+        
+        Jayla Kaita & Melissa Yago & Preetha Pant 12/19/19 */
+</script>
+<script src="./events_pts.js">//within the head i linked the css to the the display page</script>
     
     <!DOCTYPE html>
     <html>
@@ -23,7 +28,11 @@
             <div>
                 <main id="products_main_display">
                    <script>
-                        for (i = 0; i < events.length; i++) {
+                        for (i = 0; i < events.length; i++) { 
+                            /*for loop of the Events array which retrieves the properties of all four events 
+                            event, points, and images to be displayed on the Calculate Points Page
+                            
+                            this code was adapted from previouse assignment 2*/
                             document.write(`
                             <h2>${events[i].Event}</h2>
                             <h2>${events[i].Points} Points</h2> 
@@ -37,6 +46,8 @@
                         }
                     </script>
                     <br>
+                    <script>/*when the submit button is clicked it will take the user to the 
+                    total points page where they are able to view what they calculated*/</script>
                     <strong><input type="submit" value="Calculate!" name="purchase_submit"></strong>
                 </main>
             </div>
@@ -52,14 +63,14 @@
     </html>
     
     <script>
-    //the form goes to the server and loads the flowershop page
+    //the form goes to the server and loads the Point Calculation page
     
-    //once the user presses the link (image of the flowers) on the index page it will bring them to this page (the flower shop)
-    //within the body is everything the client sees (h1, products, name, price, image)
-    //in the script a for loop is written so that the arrays are listed instead of manually wtitting each item 
-    //the for loop is listing all the objects until is reaches the last one (4) and stops
+    //once the general user presses the submit button on the index page it will bring them to this page (the point calculation)
+    //within the body is everything the client sees (h1, events, name, points, image)
+    //in the script a for loop is written so that the arrays are listed instead of manually writing each item 
+    //the for loop is listing all the objects until is reaches the last one (3) and stops
     
-    //when the purchase button is pressed the functions will process
+    //when the submit button is pressed the functions will process
     
     //borrowed code from Assignment 1 example
     //functions to do checking
@@ -98,10 +109,10 @@
                      }
                      // Now respond to errors or redirect to invoice if all is ok
                      if (has_errors) {
-                         alert("Please enter only valid numbers!"); //Displays please enter only valid quantities pop up message if there are errors
-                     } else if (total_qty == 0) { // no quantity selections, just give a general alert of please select quantities
-                         alert("Please enter the amount you attended an event!");
-                     } else { // when it is all good to go, the server will send client to login page.
+                         alert("Please enter only valid numbers!"); //Displays please enter only valid numbers pop up message if there are errors
+                     } else if (total_qty == 0) { // no quantity selections, just give a general alert of "please enter the amt of times you attended an event"
+                         alert("Please enter the amount of times you attended an event!");
+                     } else { // when it is all good to go, the server will send client to Point Total page.
                         response.redirect('/gen_pttotal') 
                      }
                  }

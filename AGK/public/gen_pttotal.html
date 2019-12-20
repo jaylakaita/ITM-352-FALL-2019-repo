@@ -1,6 +1,12 @@
-<script src="./events_pts.js" type=""></script>
+<script src="./events_pts.js" type="">
+ /*Description: Points Calculation page for the Golden Key General Members
+        only members that login through the general login page have access to the points calculated page
+        
+        Code is adapted from previous Assignment 2
+        
+        Jayla Kaita & Melissa Yago & Preetha Pant 12/19/19 */</script>
 <script>
-  //invoice loads after functions in flower shop are checked 
+  //Total Points page loads after functions in Points Calculation page are checked 
   let params = (new URL(document.location)).searchParams;
   var quantities = [];
   if (params.has('purchase_submit')) {
@@ -14,9 +20,8 @@
     document.write('no form submitted');
   }
   console.log(quantities);
-/*table to create the invoice
-  linked what is in the table to the product.js where all the prices items and pictures are
-  */
+/*table to display the Total Points with the events, points, and amount inputted in the Points Calculated page
+  linked what is in the table to the events.js where all the prices items and pictures are*/
 </script>
 
 <head>
