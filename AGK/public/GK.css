@@ -2,7 +2,7 @@
 /*Jayla Kaita & Melissa Yago 12/1/19*/
 /*products page*/
 h1 {
-    color: rgb(0, 64, 255);
+    color: rgb(0, 55, 219);
     text-align: center;
     font-style: inherit;
     font-display: inherit;
@@ -26,7 +26,7 @@ h1 {
   {
     width: 200px;
     height: 200px;
-    border: 3px solid rgb(0, 64, 255);
+    border: 3px solid rgb(0, 55, 219);
   }
   
   div {
@@ -35,8 +35,11 @@ h1 {
     color: palevioletred;
   }
   /*purchase submit button*/
+  
   input {
-  color: gold;
+    display: block;
+    margin: 0 auto 0 auto;
+    color: gold;
   }
   /*invoice*/
   table{

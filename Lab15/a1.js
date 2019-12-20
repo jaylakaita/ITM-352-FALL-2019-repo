@@ -96,7 +96,7 @@ if(typeof users_reg_data[the_username] != 'undefined'){
     if (users_reg_data[the_username].password == request.body.password){
         //if it does exists, get the password
         //send them to invoice
-        response.send(the_username + 'logged in');
+        response.send(the_username + '' + 'logged in');
     }   //login
         //response when the user is logged in to greet them 
         //personalization
