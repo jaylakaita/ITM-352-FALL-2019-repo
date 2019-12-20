@@ -1,6 +1,6 @@
 <script src="./events_pts.js" type=""></script>
 <script>
- //invoice loads after functions in flower shop are checked 
+  //invoice loads after functions in flower shop are checked 
   let params = (new URL(document.location)).searchParams;
   var quantities = [];
   if (params.has('purchase_submit')) {
@@ -15,8 +15,8 @@
   }
   console.log(quantities);
 /*table to create the invoice
-linked what is in the table to the product.js where all the prices items and pictures are
-*/
+  linked what is in the table to the product.js where all the prices items and pictures are
+  */
 </script>
 
 <head>
@@ -31,7 +31,7 @@ linked what is in the table to the product.js where all the prices items and pic
   <header>
     <h1>Golden Key International Honours Society</h1>
   </header>
-  
+
   <table border="2">
     <tbody>
       <tr id="invoice">
@@ -72,6 +72,15 @@ linked what is in the table to the product.js where all the prices items and pic
       Stay Golden!
     </h2>
   </footer>
+</body>
+
+<body>
+  <div>
+    <form action="./index.html">
+      <input type="submit" value="Logout" id="logout" name="logout_submit">
+    </form>
+  </div>
+
 </body>
 
 </html>

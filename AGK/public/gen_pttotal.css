@@ -43,4 +43,12 @@ table{
       display: block;
       margin: 0 auto 0 auto;
   }
+
+  /*makes the logout button blue*/
+input{
+  color: rgb(0, 41, 163);
+  padding: 10px;
+  display: block;
+  margin: 0 auto 0 auto;
+}
   
