@@ -10,14 +10,14 @@ h1 {
   }
   
   h2 {
-      color:  gold;
+      color:  rgb(0, 55, 219);
       text-align: center;
       text-shadow: -1px 0  white, 0 1px  white, 1px 0  white, 0 -1px  white;
   }
   /*page background*/
   body {
       
-      background: white; 
+      background: gold; 
       background-repeat: no-repeat; 
       background-size: cover; 
   }
